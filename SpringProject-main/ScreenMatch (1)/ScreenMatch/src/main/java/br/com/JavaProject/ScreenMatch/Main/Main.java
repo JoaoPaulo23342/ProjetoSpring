@@ -3,12 +3,12 @@ package br.com.JavaProject.ScreenMatch.Main;
 import br.com.JavaProject.ScreenMatch.model.DataEpisodes;
 import br.com.JavaProject.ScreenMatch.model.DataSeason;
 import br.com.JavaProject.ScreenMatch.model.DataSeries;
+import br.com.JavaProject.ScreenMatch.model.Episode;
 import br.com.JavaProject.ScreenMatch.server.DataConvert;
 import br.com.JavaProject.ScreenMatch.server.server;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     private Scanner scanner = new Scanner(System.in);
@@ -55,7 +55,26 @@ public class Main {
 //        }
 
         temporadas.forEach(t -> t.episodes().forEach(e -> System.out.println(e.titulo())));
+
+        List<DataEpisodes> data_episodes = temporadas.stream()
+                .flatMap(t -> t.episodes().stream())
+                .collect(Collectors.toList());
+
+
+        System.out.println("\nTop 5 Episodes");
+        data_episodes.stream()
+                .filter(e -> !e.avaliacao().equalsIgnoreCase("N/A"))
+                .sorted(Comparator.comparing(DataEpisodes::avaliacao).reversed())
+                .limit(5)
+                .forEach(System.out::println);
+
+        List<Episode> episodes = temporadas.stream()
+                .flatMap(t -> t.episodes().stream()
+                    .map(d -> new Episode(t.number(), d))
+                ).collect(Collectors.toList());
+    episodes.forEach(System.out::println);
     }
+
 }
 
 
