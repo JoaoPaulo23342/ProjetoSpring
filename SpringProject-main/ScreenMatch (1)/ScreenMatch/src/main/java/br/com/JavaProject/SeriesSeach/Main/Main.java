@@ -114,6 +114,7 @@ if(episodeSeach.isPresent()) {
         System.out.println("A Média da série é: " + data.getAverage());
         System.out.println("A nota minima foi de: " + data.getMin());
         System.out.println("A nota maxima foi de: " + data.getMax());
+        System.out.println("Quantidade de Episódios avaliados: " + data.getCount());
 
 
     }
