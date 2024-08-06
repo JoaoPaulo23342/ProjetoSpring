@@ -1,4 +1,4 @@
-package br.com.JavaProject.ScreenMatch.model;
+package br.com.JavaProject.SeriesSeach.model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;

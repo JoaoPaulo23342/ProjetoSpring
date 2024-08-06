@@ -1,4 +1,4 @@
-package br.com.JavaProject.ScreenMatch.model;
+package br.com.JavaProject.SeriesSeach.model;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

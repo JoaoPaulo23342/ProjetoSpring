@@ -1,11 +1,11 @@
-package br.com.JavaProject.ScreenMatch.Main;
+package br.com.JavaProject.SeriesSeach.Main;
 
-import br.com.JavaProject.ScreenMatch.model.DataEpisodes;
-import br.com.JavaProject.ScreenMatch.model.DataSeason;
-import br.com.JavaProject.ScreenMatch.model.DataSeries;
-import br.com.JavaProject.ScreenMatch.model.Episode;
-import br.com.JavaProject.ScreenMatch.server.DataConvert;
-import br.com.JavaProject.ScreenMatch.server.server;
+import br.com.JavaProject.SeriesSeach.model.DataEpisodes;
+import br.com.JavaProject.SeriesSeach.model.DataSeason;
+import br.com.JavaProject.SeriesSeach.model.DataSeries;
+import br.com.JavaProject.SeriesSeach.model.Episode;
+import br.com.JavaProject.SeriesSeach.server.DataConvert;
+import br.com.JavaProject.SeriesSeach.server.server;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -101,6 +101,11 @@ if(episodeSeach.isPresent()) {
                                 "Episode:  " + e.getTitulo() +
                                 "Date:  " + e.getDataLancamento().format(df)
                 ));
+    Map<Integer, Double> avaliacoesSeason = episodes.stream()
+            .collect(Collectors.groupingBy(Episode::getSeason,
+                    Collectors.averagingDouble(Episode::getAvaliacao)));
+
+        System.out.println(avaliacoesSeason);
     }
 
 }

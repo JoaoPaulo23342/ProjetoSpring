@@ -1,6 +1,5 @@
-package br.com.JavaProject.ScreenMatch.server;
+package br.com.JavaProject.SeriesSeach.server;
 
-import br.com.JavaProject.ScreenMatch.model.DataSeries;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

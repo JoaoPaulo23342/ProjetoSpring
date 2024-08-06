@@ -1,6 +1,6 @@
-package br.com.JavaProject.ScreenMatch;
+package br.com.JavaProject.SeriesSeach;
 
-import br.com.JavaProject.ScreenMatch.Main.Main;
+import br.com.JavaProject.SeriesSeach.Main.Main;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

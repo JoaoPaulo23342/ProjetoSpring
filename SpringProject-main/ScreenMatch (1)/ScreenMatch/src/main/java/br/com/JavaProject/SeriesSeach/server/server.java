@@ -1,4 +1,4 @@
-package br.com.JavaProject.ScreenMatch.server;
+package br.com.JavaProject.SeriesSeach.server;
 
 import java.io.IOException;
 import java.net.URI;
