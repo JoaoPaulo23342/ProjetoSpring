@@ -80,7 +80,7 @@ public class Main {
         System.out.println("digite um trecho do titulo do episodio");
         var trechoTitulo = scanner.nextLine();
         Optional<Episode> episodeSeach = episodes.stream()
-                .filter(e -> e.getTitulo().contains(trechoTitulo))
+                .filter(e -> e.getTitulo().toLowerCase().contains(trechoTitulo.toLowerCase()))
                 .findFirst();
 if(episodeSeach.isPresent()) {
     System.out.println("Episodio encontrado com sucesso");
