@@ -63,11 +63,12 @@ public class Main {
                 .collect(Collectors.toList());
 
 
-        System.out.println("\nTop 5 Episodes");
+        System.out.println("\nTop 3 Episodes");
         data_episodes.stream()
                 .filter(e -> !e.avaliacao().equalsIgnoreCase("N/A"))
                 .sorted(Comparator.comparing(DataEpisodes::avaliacao).reversed())
-                .limit(5)
+                .limit(3)
+                .map(e -> e.titulo().toUpperCase())
                 .forEach(System.out::println);
 
         List<Episode> episodes = temporadas.stream()
@@ -76,6 +77,18 @@ public class Main {
                 ).collect(Collectors.toList());
     episodes.forEach(System.out::println);
 
+        System.out.println("digite um trecho do titulo do episodio");
+        var trechoTitulo = scanner.nextLine();
+        Optional<Episode> episodeSeach = episodes.stream()
+                .filter(e -> e.getTitulo().contains(trechoTitulo))
+                .findFirst();
+if(episodeSeach.isPresent()) {
+    System.out.println("Episodio encontrado com sucesso");
+    System.out.println("temporada: " + episodeSeach.get().getSeason());
+
+}else {
+    System.out.println("Episodio não encontrado Bad Error☠️");
+}
         System.out.println("A partir de que ano você deseja ver os episodios?");
         var ano = scanner.nextInt();
         scanner.nextLine();
