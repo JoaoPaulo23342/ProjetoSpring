@@ -107,6 +107,15 @@ if(episodeSeach.isPresent()) {
                     Collectors.averagingDouble(Episode::getAvaliacao)));
 
         System.out.println(avaliacoesSeason);
+
+        DoubleSummaryStatistics data = episodes.stream()
+                .filter(e -> e.getAvaliacao() > 0.0)
+                .collect(Collectors.summarizingDouble(Episode::getAvaliacao));
+        System.out.println("A Média da série é: " + data.getAverage());
+        System.out.println("A nota minima foi de: " + data.getMin());
+        System.out.println("A nota maxima foi de: " + data.getMax());
+
+
     }
 
 }
