@@ -75,7 +75,8 @@ public class Main {
             temporadas.add(dadosTemporada);
         }
         temporadas.forEach(System.out::println);
-    }
+        System.out.println("ola");}
+
 }
 
 
