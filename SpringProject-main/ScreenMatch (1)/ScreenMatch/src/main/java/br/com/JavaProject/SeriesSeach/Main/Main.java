@@ -7,6 +7,7 @@ import br.com.JavaProject.SeriesSeach.model.Episode;
 import br.com.JavaProject.SeriesSeach.server.DataConvert;
 import br.com.JavaProject.SeriesSeach.server.server;
 
+import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -19,38 +20,46 @@ public class Main {
     private final String ENDERECO = "https://www.omdbapi.com/?t=";
 
     private final String API_KEY = "&apikey=5dd27116";
-
+    private List<DataSeries> dataseries = new ArrayList<>();
 
 
     public void exibeMenu() {
-        var menu = """
-                1 - Buscar séries
-                2 - Buscar episódios
-                
-                0 - Sair                                 
-                """;
+        var option = -1;
+        while(option != 0) {
+            var menu = """
+                    1 - Buscar séries
+                    2 - Buscar episódios
+                    3 - Salvar séries buscadas              
+                    0 - Sair                                 
+                    """;
 
-        System.out.println(menu);
-        var opcao = scanner.nextInt();
-        scanner.nextLine();
+            System.out.println(menu);
+            option = scanner.nextInt();
+            scanner.nextLine();
 
-        switch (opcao) {
-            case 1:
-                buscarSerieWeb();
-                break;
-            case 2:
-                buscarEpisodioPorSerie();
-                break;
-            case 0:
-                System.out.println("Saindo...");
-                break;
-            default:
-                System.out.println("Opção inválida");
+            switch (option) {
+                case 1:
+                    buscarSerieWeb();
+                    break;
+                case 2:
+                    buscarEpisodioPorSerie();
+                    break;
+
+                case 3:
+                    listarSeriesBuscadas();
+                    break;
+                case 0:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+            }
         }
     }
 
     private void buscarSerieWeb() {
         DataSeries dados = getDadosSerie();
+        dataseries.add(dados);
         System.out.println(dados);
     }
 
@@ -73,8 +82,10 @@ public class Main {
         }
         temporadas.forEach(System.out::println);
     }
+    private void listarSeriesBuscadas(){
+        dataseries.forEach(System.out::println);
+    }
+
 }
-
-
 
 
