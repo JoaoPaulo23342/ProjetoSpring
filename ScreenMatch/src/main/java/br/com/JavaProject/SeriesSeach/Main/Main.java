@@ -28,12 +28,13 @@ public class Main {
             var menu = """
                     1 - Buscar séries
                     2 - Buscar episódios
-                                    
+                    3 - Listar Séries buscadas                
                     0 - Sair                                 
                     """;
 
             System.out.println(menu);
 
+            option = scanner.nextInt();
             scanner.nextLine();
 
             switch (option) {
@@ -43,6 +44,10 @@ public class Main {
                 case 2:
                     buscarEpisodioPorSerie();
                     break;
+                case 3:
+                    listarSeriesBuscadas();
+                    break;
+
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -76,6 +81,9 @@ public class Main {
             temporadas.add(dadosTemporada);
         }
         temporadas.forEach(System.out::println);
+    }
+    private void listarSeriesBuscadas() {
+        dataseries.forEach(System.out::println);
     }
 
 }
