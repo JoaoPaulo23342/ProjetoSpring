@@ -19,11 +19,11 @@ public class Main {
     private final String ENDERECO = "https://www.omdbapi.com/?t=";
 
     private final String API_KEY = "&apikey=5dd27116";
-
+    private List<DataSeries> dataseries = new ArrayList<>();
 
 
     public void exibeMenu() {
-        var option = scanner.nextInt();
+        var option = -1;
         while(option != 0) {
             var menu = """
                     1 - Buscar séries
@@ -54,6 +54,7 @@ public class Main {
 
     private void buscarSerieWeb() {
         DataSeries dados = getDadosSerie();
+        dataseries.add(dados);
         System.out.println(dados);
     }
 
@@ -75,7 +76,7 @@ public class Main {
             temporadas.add(dadosTemporada);
         }
         temporadas.forEach(System.out::println);
-        System.out.println("ola");}
+    }
 
 }
 
