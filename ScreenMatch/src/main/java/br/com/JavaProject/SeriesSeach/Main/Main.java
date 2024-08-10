@@ -1,12 +1,10 @@
 package br.com.JavaProject.SeriesSeach.Main;
 
-import br.com.JavaProject.SeriesSeach.model.DataEpisodes;
-import br.com.JavaProject.SeriesSeach.model.DataSeason;
-import br.com.JavaProject.SeriesSeach.model.DataSeries;
-import br.com.JavaProject.SeriesSeach.model.Episode;
+import br.com.JavaProject.SeriesSeach.model.*;
 import br.com.JavaProject.SeriesSeach.server.DataConvert;
 import br.com.JavaProject.SeriesSeach.server.server;
 
+import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -28,12 +26,12 @@ public class Main {
             var menu = """
                     1 - Buscar séries
                     2 - Buscar episódios
-                                    
+                    3 - Salvar séries buscadas              
                     0 - Sair                                 
                     """;
 
             System.out.println(menu);
-
+            option = scanner.nextInt();
             scanner.nextLine();
 
             switch (option) {
@@ -42,6 +40,10 @@ public class Main {
                     break;
                 case 2:
                     buscarEpisodioPorSerie();
+                    break;
+
+                case 3:
+                    listarSeriesBuscadas();
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -76,6 +78,16 @@ public class Main {
             temporadas.add(dadosTemporada);
         }
         temporadas.forEach(System.out::println);
+    }
+    private void listarSeriesBuscadas(){
+        List<Series> series = new ArrayList<>();
+        series = dataseries.stream()
+                .map(d -> new Series(d))
+                .collect(Collectors.toList());
+        series.stream()
+                .sorted(Comparator.comparing(Series::getGeneroDoFilme))
+                .forEach(System.out::println);
+
     }
 
 }
