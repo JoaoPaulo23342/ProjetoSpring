@@ -23,6 +23,7 @@ public class Series {
         this.poster = dadosSerie.poster();
         this.ResumoDoFilme = dadosSerie.ResumoDoFilme();
 
+
     }
 
     public Integer getTotalTemporadas() {
