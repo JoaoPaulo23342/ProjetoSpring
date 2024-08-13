@@ -2,13 +2,29 @@ package br.com.JavaProject.SeriesSeach.model;
 
 import br.com.JavaProject.SeriesSeach.model.Category.Category;
 import com.fasterxml.jackson.annotation.JsonAlias;
+import jakarta.persistence.*;
 
 import java.util.OptionalDouble;
-
+@Entity
+@Table(name = "Series")
 public class Series {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Column(unique = true)
     private String titulo;
     private Integer totalTemporadas;
     private Double avaliacao;
+    @Enumerated(EnumType.STRING)
     private Category generoDoFilme;
     private String atoresDoFilme;
     private String poster;
